@@ -1,6 +1,30 @@
 # Change Log
 
 <a name="unreleased"></a>
+## [0.18.0](https://www.github.com/knative-sandbox/kn-plugin-func/compare/v0.17.1...v0.18.0) (2021-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* change `describe` command to `info` (#474)
+* use key&value for Labels (#472)
+
+### Features
+
+* change `describe` command to `info` ([#474](https://www.github.com/knative-sandbox/kn-plugin-func/issues/474)) ([10a0757](https://www.github.com/knative-sandbox/kn-plugin-func/commit/10a07578e9f6ab6bbbb8028633b37e3400fd22bb))
+* generate json schema for func.yaml ([#460](https://www.github.com/knative-sandbox/kn-plugin-func/issues/460)) ([8939f89](https://www.github.com/knative-sandbox/kn-plugin-func/commit/8939f89beae7d5b2f66bc18b921ca3059f89e629))
+* make func schema if config updated ([#468](https://www.github.com/knative-sandbox/kn-plugin-func/issues/468)) ([6ae2157](https://www.github.com/knative-sandbox/kn-plugin-func/commit/6ae215754930c8a1e1dc4b5cd0b8ef3d99bb2893))
+* repository management client api ([#467](https://www.github.com/knative-sandbox/kn-plugin-func/issues/467)) ([9fd2475](https://www.github.com/knative-sandbox/kn-plugin-func/commit/9fd247557ae8ee30cc7c5f0107d80fa72fbe8086))
+* use key&value for Labels ([#472](https://www.github.com/knative-sandbox/kn-plugin-func/issues/472)) ([5569681](https://www.github.com/knative-sandbox/kn-plugin-func/commit/55696811e317a51767e09acab3d4d4e2abc6e982))
+
+
+### Bug Fixes
+
+* better cleanup before pkger run ([#479](https://www.github.com/knative-sandbox/kn-plugin-func/issues/479)) ([25b1d63](https://www.github.com/knative-sandbox/kn-plugin-func/commit/25b1d63b9c1b332e1d59e494af83bdc3a1f576e9))
+* enable healt checks for Quarkus ([#477](https://www.github.com/knative-sandbox/kn-plugin-func/issues/477)) ([72a1cf8](https://www.github.com/knative-sandbox/kn-plugin-func/commit/72a1cf885e092340295cc6ace3580e7420640cda))
+* regenerate pkged.go ([#478](https://www.github.com/knative-sandbox/kn-plugin-func/issues/478)) ([c7b3af4](https://www.github.com/knative-sandbox/kn-plugin-func/commit/c7b3af41b8cac0b9edfb96d3a01230d2606e320a))
+* support nested subdirs in remote templates ([#482](https://www.github.com/knative-sandbox/kn-plugin-func/issues/482)) ([fcf9e77](https://www.github.com/knative-sandbox/kn-plugin-func/commit/fcf9e77cb93808d28d0c60f3a0959fac605771fb))
+
 ### [0.17.1](https://www.github.com/knative-sandbox/kn-plugin-func/compare/v0.17.0...v0.17.1) (2021-08-05)
 
 
