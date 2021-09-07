@@ -41,7 +41,7 @@ main() {
   registry
   configure
   next_steps
-  
+
   echo "${em}DONE${me}"
 }
 
@@ -74,12 +74,12 @@ serving() {
   echo "${em}② Knative Serving${me}"
 
   kubectl apply --filename https://github.com/knative/serving/releases/download/$knative_version/serving-crds.yaml
-
+  echo "🛑"
   sleep 5
   kubectl wait --for=condition=Established --all crd --timeout=5m
-
-  curl -L -s https://github.com/knative/serving/releases/download/$knative_version/serving-core.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | yq 'del(.metadata.annotations."knative.dev/example-checksum")' -y | kubectl apply -f -
-
+  echo "🛑"
+  kubectl apply --filename https://github.com/knative/serving/releases/download/$knative_version/serving-core.yaml
+  echo "🛑"
 
   sleep 5
   kubectl wait pod --for=condition=Ready -l '!job-name' -n knative-serving --timeout=5m
@@ -159,7 +159,7 @@ eventing() {
   kubectl wait --for=condition=Established --all crd --timeout=5m
 
   # Core
-  curl -L -s https://github.com/knative/eventing/releases/download/$knative_version/eventing-core.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | yq 'del(.metadata.annotations."knative.dev/example-checksum")' -y | kubectl apply -f -
+  kubectl apply --filename https://github.com/knative/eventing/releases/download/$knative_version/eventing-core.yaml
   sleep 5
   kubectl wait pod --for=condition=Ready -l '!job-name' -n knative-eventing --timeout=5m
 
@@ -169,7 +169,7 @@ eventing() {
   kubectl wait pod --for=condition=Ready -l '!job-name' -n knative-eventing --timeout=5m
 
   # Broker
-  curl -L -s https://github.com/knative/eventing/releases/download/$knative_version/mt-channel-broker.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | yq 'del(.metadata.annotations."knative.dev/example-checksum")' -y | kubectl apply -f -
+  curl -L -s https://github.com/knative/eventing/releases/download/$knative_version/mt-channel-broker.yaml | kubectl apply -f -
   sleep 5
   kubectl wait pod --for=condition=Ready -l '!job-name' -n knative-eventing --timeout=5m
 
@@ -246,7 +246,7 @@ next_steps() {
   local red=$(tput bold)$(tput setaf 1)
 
   echo "${em}Configure Registry${me}"
-  echo "If not in CI (running ci.sh): 
+  echo "If not in CI (running ci.sh):
   echo "  ${red}add 'kind-registry' "to your local hosts${me} file:"
   echo "    echo \"127.0.0.1 kind-registry\" | sudo tee --append /etc/hosts"
   echo "  ${red}set registry as insecure${me} in the docker daemon config (/etc/docker/daemon.json on linux or ~/.docker/daemon.json on OSX):
